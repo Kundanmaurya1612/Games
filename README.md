@@ -1,2 +1,4 @@
 # Snake_Game
-too simple coded snake game..
+simple Snake Game 
+Build for Future feature updates
+
