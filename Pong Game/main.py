@@ -2,7 +2,9 @@ from turtle import Screen
 from paddel import Paddel
 from ball import Ball
 from random import randint
-
+from scoreboard import Score
+import winsound
+import os
 
 screen = Screen()
 screen.bgcolor("#181818")
@@ -15,8 +17,13 @@ screen.tracer(0)
 
 paddel = Paddel((-440,0))
 paddel2 = Paddel((430,0))
+leftScore = Score((-100,220))
+rightScore = Score((+100,220))
 
-
+# Get absolute path of the directory this script is in
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+POP_SOUND = os.path.join(BASE_DIR, "sounds", "pop.wav")
+MISS_SOUND = os.path.join(BASE_DIR, "sounds", "miss.wav")
 # Key Bindings
 screen.onkeypress(paddel.t1_up_move_on, "w")
 screen.onkeyrelease(paddel.t1_up_move_off, "w")
@@ -46,9 +53,21 @@ def game_loop():
 
     # Detect collision with paddles
     if (ball.distance(paddel2) < 50 and ball.xcor() > 410) or (ball.distance(paddel) < 50 and ball.xcor() < -420):
+        winsound.PlaySound(POP_SOUND, winsound.SND_ASYNC | winsound.SND_NODEFAULT)
         ball.bounce_x()
-
+        ball.x_move *= 1.1
+        ball.y_move *= 1.1
     
+    if ball.xcor() > 450:
+        winsound.PlaySound(MISS_SOUND, winsound.SND_ASYNC | winsound.SND_NODEFAULT)
+        leftScore.increase()
+        ball.restart()
+    
+    if ball.xcor() < -450:
+        winsound.PlaySound(MISS_SOUND, winsound.SND_ASYNC | winsound.SND_NODEFAULT)
+        rightScore.increase()
+        ball.restart()
+
     screen.update() # Update both at once
     screen.ontimer(game_loop, 20) # Run at 50 FPS
 

@@ -1,5 +1,6 @@
 from turtle import Turtle
-from random import randint
+from random import choice
+import time
 class Ball(Turtle):
     def __init__(self):
         super().__init__()
@@ -8,8 +9,8 @@ class Ball(Turtle):
         self.penup()
         self.shapesize(1)
         self.speed(0)
-        self.x_move = 5
-        self.y_move = 5
+        self.x_move = float(choice([-3,3]))
+        self.y_move = float(choice([-3,3]))
 
     def move(self):
         new_x = self.xcor() + self.x_move
@@ -22,3 +23,10 @@ class Ball(Turtle):
 
     def bounce_x(self):
         self.x_move *= -1
+
+    def restart(self) :
+        self.reset()
+        self.__init__()
+        time.sleep(1)
+        self.move()
+        
