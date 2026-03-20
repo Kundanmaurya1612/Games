@@ -1,6 +1,6 @@
 # Python Classic Games
 
-A collection of classic games (Snake and Pong) built with Python and the Turtle library. 
+A collection of classic games (Snake, Pong, and Turtle Crossing) built with Python and the Turtle library. 
 Designed with a clean architecture to easily support future feature updates.
 
 ## Features
@@ -14,6 +14,11 @@ Designed with a clean architecture to easily support future feature updates.
 - Independent score tracking for left and right players.
 - Sound effects for paddle hits and misses.
 
+### Turtle Crossing
+- Guide the turtle safely across a busy road.
+- Dynamic difficulty progression as levels increase.
+- Collision detection and level tracking.
+
 ## How to Play
 
 ### Snake
@@ -25,6 +30,11 @@ Designed with a clean architecture to easily support future feature updates.
 1. **Left Player:** Use **W** (Up) and **S** (Down) to control the paddle.
 2. **Right Player:** Use the **Up** and **Down** arrow keys to control the paddle.
 3. Prevent the ball from passing your paddle!
+
+### Turtle Crossing
+1. Use **W** to move the turtle forward.
+2. Dodge the incoming traffic moving across the screen.
+3. Reach the top finish line to advance to the next level!
 
 ## Installation
 
@@ -49,6 +59,12 @@ Designed with a clean architecture to easily support future feature updates.
    **To play Pong:**
    ```bash
    cd "Pong Game"
+   python main.py
+   ```
+
+   **To play Turtle Crossing:**
+   ```bash
+   cd "Turtle Crosing"
    python main.py
    ```
 
