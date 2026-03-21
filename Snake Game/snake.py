@@ -20,8 +20,11 @@ class Snake:
     def extend(self):
         self.add_segment(self.tims[-1].position())
 
-        
-        
+    def refresh(self):
+        for snake in self.tims:
+            snake.goto(500,500)
+        self.tims.clear()
+        self.__init__()
 
     def move(self):
         for snake in range(len(self.tims)-1, 0, -1):

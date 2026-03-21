@@ -24,20 +24,21 @@ while game_is_on:
     #detect collison with food
     if snake.tims[0].distance(food) < 15:
         food.refresh()
-        score.refresh()
+        score.current_score +=1
+        score.update()
         snake.extend()
         
     
     #detect collision with wall
     if snake.tims[0].xcor() > 280 or snake.tims[0].xcor() < -280 or snake.tims[0].ycor() > 280 or snake.tims[0].ycor() < -280:
-        score.game_over()
-        game_is_on = False
-    
+        score.refresh()
+        snake.refresh()
+       
     #self collision detection
     for bite in snake.tims[1:]:
         if snake.tims[0].distance(bite) < 10:
-            score.game_over()
-            game_is_on = False
+           score.refresh()
+           snake.refresh()
 
 screen.exitonclick()
 
