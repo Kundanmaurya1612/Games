@@ -16,7 +16,6 @@ data = pandas.read_csv("50_states.csv")
 
 states = data["state"].to_list()
 guessed_states = []
-states_to_learn = []
 score = 0
 
 while len(guessed_states) != len(states):
@@ -36,9 +35,9 @@ while len(guessed_states) != len(states):
         tom.write(user, font=("Arial", 8, "bold"))
         guessed_states.append(user)
 
-for gs in states:
-    if gs not in guessed_states:
-        states_to_learn.append(gs)
+
+states_to_learn = [gs for gs in states if gs not in guessed_states]
+
 df = pandas.DataFrame(states_to_learn)
 df.to_csv("states_to_learn.csv")
     
